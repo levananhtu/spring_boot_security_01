@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Spring Boot Security Hello</title>
 </head>
 <body>
 <h2>Spring Boot Security Hello</h2>
-<form name='login-form' th:action="@{/j_spring_security_login}" method='POST'>
+<form method='POST' name='login-form' th:action="@{/j_spring_security_login}">
     <table>
         <tr>
             <td>Username:</td>
-            <td><label> <input type='text' name='username' value=''> </label></td>
+            <td><label> <input name='username' type='text' value=''> </label></td>
         </tr>
         <tr>
             <td>Password:</td>
-            <td><label> <input type='password' name='password'/> </label></td>
+            <td><label> <input name='password' type='password'/> </label></td>
         </tr>
         <tr>
             <td>Remember Me:</td>
             <td>
-                <label> <input type="checkbox" name="remember-me"/> </label></td>
+                <label> <input name="remember-me" type="checkbox"/> </label></td>
         </tr>
         <tr>
             <td><input name="submit" type="submit" value="submit"/></td>
         </tr>
     </table>
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
 </form>
 </body>
 </html>

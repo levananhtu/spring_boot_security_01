@@ -34,8 +34,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/user/**").hasAnyAuthority(userAuthority.getAuthority(), adminAuthority.getAuthority());
         http.authorizeRequests().antMatchers("/admin/**").hasAuthority(adminAuthority.getAuthority());
         http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
-        http.authorizeRequests().antMatchers("/login").anonymous();
-        http.authorizeRequests().antMatchers("/logout").not().anonymous();
+        http.authorizeRequests().antMatchers("/login").not().hasAnyAuthority(adminAuthority.getAuthority(), userAuthority.getAuthority());
+//        http.authorizeRequests().antMatchers("/login").(adminAuthority.getAuthority(), userAuthority.getAuthority());
+
+//        http.authorizeRequests().antMatchers("/logout").not().anonymous();
 
         http.authorizeRequests().and().formLogin()
                 .passwordParameter("password")
